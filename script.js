@@ -25,17 +25,32 @@ const markovObjGen = (arr) => {
     return markObj;
 } 
 
-mountainObj = markovObjGen(strArr);
-console.log(mountainObj['the']);
+let mountainObj = markovObjGen(strArr);
 
 
-//const writeLine = (markObj, lengthNum) => {
-
+const writeLine = (markObj, lengthNum) => {
+    let objKeysArr = Object.keys(markObj);
+    
     //returns random word after input word
     const randGen = (word) => {
-        return mountainObj[word][Math.floor(Math.random() * mountainObj[word].length)];
-        console.log(Math.floor(Math.random() * mountainObj[word].length));
+        return markObj[word][Math.floor(Math.random() * markObj[word].length)];
     }
-//}
+    
+    let poemLineArr = [];
+    
+    //grabs random first word from object keys
+    let firstWord = objKeysArr[Math.floor(Math.random() * objKeysArr.length)];
+    poemLineArr.push(firstWord);
+    
+    //iterates through line length calling randGen for the next word
+    for(let i = 1; i <= lengthNum; i++){
+        poemLineArr.push(randGen(poemLineArr[i-1]));
 
-console.log(randGen('the'));
+    }
+    
+    //joins words into a string and returns the string;
+    return poemLineArr.join(" ");
+    
+}
+
+console.log(writeLine(mountainObj, 5));
