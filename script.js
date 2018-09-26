@@ -53,4 +53,14 @@ const writeLine = (markObj, lengthNum) => {
     
 }
 
-console.log(writeLine(mountainObj, 5));
+
+const poemMaker = (obj, lines, lineLength) => {
+    let poem = '';
+    for(let i = 0; i < lines; i++){
+        poem +=  `${writeLine(obj, lineLength)} \n`
+    }
+    
+    return poem;
+}
+
+console.log(poemMaker(mountainObj, 4, 5));
