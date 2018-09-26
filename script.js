@@ -4,11 +4,14 @@
 let inputStr = 
     'The most remarkable thing about coming home to you Is the feeling of being in motion again; Its the most extraordinary thing in the world I have two big hands And a heart pumping blood And a nineteen sixty seven Colt forty five with a busted safety catch The world shines As I cross the Macon county line Going to Georgia The most remarkable thing about you standing in the doorway Is that its you and that you are standing in the doorway And you smile as you ease the gun from my hand I am frozen with joy right where I stand The world throws its light underneath your hair Forty miles from Atlanta This is nowhere Going to Georgia The world shines As I cross the Macon county line Going to Georgia'
 
-let regNumandPunc = /\d|[.!,;']/gi; 
+//removes numbers and punctuation and converts to lowercase
+let regNumandPunc = /\d|[.!,;']/gi;
 let cleanStr = inputStr.toLowerCase().replace(regNumandPunc, );
+
+// splits string into array of words
 let strArr = cleanStr.split(" ");
 
-
+//interates through string creating the markov object
 const markovObjGen = (arr) => {
     let markObj = {};
     
@@ -22,4 +25,17 @@ const markovObjGen = (arr) => {
     return markObj;
 } 
 
-console.log(markovObjGen(strArr));
+mountainObj = markovObjGen(strArr);
+console.log(mountainObj['the']);
+
+
+//const writeLine = (markObj, lengthNum) => {
+
+    //returns random word after input word
+    const randGen = (word) => {
+        return mountainObj[word][Math.floor(Math.random() * mountainObj[word].length)];
+        console.log(Math.floor(Math.random() * mountainObj[word].length));
+    }
+//}
+
+console.log(randGen('the'));
