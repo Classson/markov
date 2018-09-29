@@ -134,15 +134,12 @@ const poemMaker = (inputText, numLines, numLength) => {
         let markObj = MarkovDictBuilder();
         let objKeysArr = Object.keys(markObj);
         
-        console.log(markObj);
-        
         //returns random word after input word
         const randGenWord = (words) => {
 
             let possibleNextWordArr = [];
 
             for(let i = 0; i < objKeysArr.length; i++){
-            //console.log("the markObj[objKeysArr[i]] is");
             let currentFirstSearch = markObj[objKeysArr[i]][0][0];
             let currentSecSearch = markObj[objKeysArr[i]][0][1];
 
@@ -187,7 +184,6 @@ const poemMaker = (inputText, numLines, numLength) => {
             poemLineArr.push(nextWordinArr);
         }
         
-        console.log(poemLineArr);
         //joins words into a string and returns the string;
         poemStr = poemLineArr.join(" ");
         return poemStr.replace(",", '')
@@ -213,8 +209,7 @@ const displayResults = () => {
     let inputLines = document.getElementById("lineNum").value;
     let inputWordNum = document.getElementById("wordNum").value;
     resultPoem = poemMaker(inputString, inputLines = randomNumGen(4,8), inputWordNum = randomNumGen(4, 7));
-    
-    console.log(resultPoem);
+
     document.getElementById('poemDisplay').innerHTML = resultPoem;
     
 }
