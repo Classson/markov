@@ -73,7 +73,14 @@ let weakerStr = 'Just one more drink and then I should be on my way home Im not 
 //}
 
 
-const poemMaker = (inputText, numLines, numLength) => {
+//random number generator between a max and min 
+function randomNumGen(min, max)
+{
+    return Math.floor(Math.random()*(max - min + 1) + min);
+}
+
+// creates a poem from an input string if number of lines and length of lines isn't specified it returns a random number between a min and max
+const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNumGen(4, 7)) => {
     
     // function generating the markovObject
     const MarkovDictBuilder = () => {
@@ -117,7 +124,7 @@ const poemMaker = (inputText, numLines, numLength) => {
         poemLineArr.push(firstWord);
 
         //iterates through line length calling randGen for the next word
-        for(let i = 1; i <= numLength; i++){
+        for(let i = 1; i < numLength; i++){
             poemLineArr.push(randGen(poemLineArr[i-1]));
         }
 
@@ -139,4 +146,4 @@ const poemMaker = (inputText, numLines, numLength) => {
     return lineRepeater();
 }
 
-console.log(poemMaker(tallstr, 4, 5));
+console.log(poemMaker(tallstr));
