@@ -6,13 +6,16 @@ let tallstr = "Window facing an ill-kept front yard Plums on the tree heavy with
 let mountainStr = 
     'The most remarkable thing about coming home to you Is the feeling of being in motion again; Its the most extraordinary thing in the world I have two big hands And a heart pumping blood And a nineteen sixty seven Colt forty five with a busted safety catch The world shines As I cross the Macon county line Going to Georgia The most remarkable thing about you standing in the doorway Is that its you and that you are standing in the doorway And you smile as you ease the gun from my hand I am frozen with joy right where I stand The world throws its light underneath your hair Forty miles from Atlanta This is nowhere Going to Georgia The world shines As I cross the Macon county line Going to Georgia'
 
-let weakerStr = 'Just one more drink and then I should be on my way home Im not entirely sure what youre talking about Ive had a really nice time, but my dogs need to be fed I must say that in the right light, you look like Shackleton Comment allez-vous ce soir? Je suis comme ci comme ça Yes, a penguin taught me French Back in Antarctica I could show you the way shadows colonize snow Ice breaking up on the bay off the Lassiter coast Light failing over the pole as every longitude leads Up to your frostbitten feet, oh, you\'re very sweet Thank you for the flowers And the book by Derrida But I must be getting back To dear Antarctica Say do you have a ship and a dozen able men That maybe you could lend me? Oh, Antarctica'
+let weakerStr = 'Just one more drink and then I should be on my way home Im not       entirely sure what youre talking about Ive had a really nice time, but my         dogs need to be fed I must say that in the right light, you look like             Shackleton Comment allez-vous ce soir? Je suis comme ci comme ça Yes, a           penguin taught me French Back in Antarctica I could show you the way shadows     colonize snow Ice breaking up on the bay off the Lassiter coast Light failing     over the pole as every longitude leads Up to your frostbitten feet, oh,           you\'re very sweet Thank you for the flowers And the book by Derrida But I       must be getting back To dear Antarctica Say do you have a ship and a dozen       able men That maybe you could lend me? Oh, Antarctica'
+
+let testStr = "The quick brown fox jumps over the lazy dog"
+
 //
 //// function generating the markovObject
 //const MarkovDictBuilder = (string) => {
 //    //removes numbers and punctuation and converts to lowercase
 //    let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`~()]/gi;
-//    let cleanStr = string.toLowerCase().replace(regNumandPunc, ' ');
+//    let cleanStr = string.toLowerCase().replace(regNumandPunc, '');
 //
 //    // splits string into array of words
 //    let strArr = cleanStr.split(" ");
@@ -21,19 +24,28 @@ let weakerStr = 'Just one more drink and then I should be on my way home Im not 
 //    const markovObjGen = () => {
 //    let markObj = {};
 //    
-//    for(let i = 0; i < strArr.length-1; i++){
-//        if(markObj[strArr[i]]){
-//            markObj[strArr[i]].push(strArr[i+1]);
-//        } else {
-//            markObj[strArr[i]] = [strArr[i+1]];
-//        }
-//    }
-//    return markObj;
+//    for(let i = 0; i < strArr.length-2; i++){
+//        let currentWord = strArr[i];
+//        let secondWord = strArr[i+1];
+//        let thirdWord = strArr[i+2];
+//        
+//        let currentPhrase = `${currentWord} ${secondWord}`;
+//        console.log(currentPhrase);
+//        
+//        if(markObj[currentPhrase]){
+//            markObj[currentPhrase].push(thirdWord);
+//                } else {
+//                    markObj[currentPhrase] = [thirdWord];
+//                }
+//            }
+//        return markObj;
 //    }
 //    return markovObjGen();
 //} 
 //  
-//let mountainObj = MarkovDictBuilder(tallstr);
+//let mountainObj = MarkovDictBuilder(mountainStr);
+//
+//console.log(mountainObj);
 //
 //
 ////function writing each line
@@ -86,50 +98,90 @@ const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNu
     const MarkovDictBuilder = () => {
     //removes numbers and punctuation and converts to lowercase
     let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`~()]/gi;
-    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, ' ');
+    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '');
 
     // splits string into array of words
     let strArr = cleanStr.split(" ");
 
     //interates through string creating the markov dictionary
+    //keys are sets of two words, the first array in each element is also the two words so they can be searched seperately 
         const markovObjGen = () => {
         let markObj = {};
 
         for(let i = 0; i < strArr.length-1; i++){
-            if(markObj[strArr[i]]){
-                markObj[strArr[i]].push(strArr[i+1]);
-                } else {
-                markObj[strArr[i]] = [strArr[i+1]];
+            let currentWord = strArr[i];
+            let secondWord = strArr[i+1];
+            let thirdWord = strArr[i+2];
+        
+            let currentPhrase = [currentWord, secondWord];
+        
+            if(markObj[currentPhrase]){
+                markObj[currentPhrase].push(thirdWord);
+                    } else {
+                        markObj[currentPhrase] = [currentPhrase, thirdWord];
+                    }
                 }
+            return markObj;
             }
-        return markObj;
-        }
-    return markovObjGen();    
+        return markovObjGen();
     }
     
     //function writing each line
     const writeLine = () => {
         let markObj = MarkovDictBuilder();
         let objKeysArr = Object.keys(markObj);
-
+        
+        console.log(markObj);
+        
         //returns random word after input word
-        const randGen = (word) => {
-            return markObj[word][Math.floor(Math.random() * markObj[word].length)];
+        const randGenWord = (word) => {
+
+            let arrOfMatching = [];
+
+            for(let i = 0; i < objKeysArr.length; i++){
+                
+                if(word === markObj[objKeysArr[i]][0][0]){
+                    let matchArr = [markObj[objKeysArr[i]][0]];
+                    let possibleNextWord = matchArr[0][1];
+                    arrOfMatching.push(possibleNextWord);
+                }
+            }
+            
+            let nextWord = arrOfMatching[Math.floor(Math.random() * arrOfMatching.length)];
+            
+            return nextWord;
         }
 
         let poemLineArr = [];
 
         //grabs random first word from object keys
-        let firstWord = objKeysArr[Math.floor(Math.random() * objKeysArr.length)];
-        poemLineArr.push(firstWord);
-
+        let firstPhrase = objKeysArr[Math.floor(Math.random() * objKeysArr.length)];
+        
+        // pushes first word to the array
+        poemLineArr.push(markObj[firstPhrase][0][0]);
+        
+        //pushes second word to the array
+        poemLineArr.push(markObj[firstPhrase][0][1]);
+        
+        
         //iterates through line length calling randGen for the next word
-        for(let i = 1; i < numLength; i++){
-            poemLineArr.push(randGen(poemLineArr[i-1]));
+        //if there isn't a next word a random word is used
+        for(let i = 1; i < numLength-1; i++){
+            let searchWord = poemLineArr[i];
+            
+            let nextWordinArr = randGenWord(searchWord);
+            if(nextWordinArr === undefined){
+                let randomWord = objKeysArr[Math.floor(Math.random() * objKeysArr.length)];
+                nextWordinArr = markObj[randomWord][0][0];
+            }
+            
+            poemLineArr.push(nextWordinArr);
         }
-
+        
+        console.log(poemLineArr);
         //joins words into a string and returns the string;
-        return poemLineArr.join(" ");
+        poemStr = poemLineArr.join(" ");
+        return poemStr.replace(",", '')
     }
     
 
@@ -139,11 +191,12 @@ const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNu
         for(let i = 0; i < numLines; i++){
             poem +=  `${writeLine()} \n`
         }
-
+        
         return poem;
     }
 
     return lineRepeater();
 }
 
-console.log(poemMaker(tallstr));
+console.log(poemMaker(tallstr, 4, 5));
+
