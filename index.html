@@ -10,7 +10,21 @@
     <textarea type="text" id="inputText" rows="10" cols="30" placeholder="Enter your text."></textarea>
 
     <br>
+    <div id=numberInputs>
+        
+        <label for="wordNum">Number of words per line</label>
+        <input id="wordNum" type="number" name="wordNum" value="" >
+        
+        <br>
+        
+        <label for="lineNum">Number of lines in the poem</label>
+        <input id="lineNum" type="number" name="lineNum" value="">
+        
+    </div>
+    
     <input type ="button" id="submitButton" onclick="displayResults()" value="SubmittedText"/>
+    
+    <br>
     
     <div id=poemDisplay>display</div>
     

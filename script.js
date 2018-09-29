@@ -92,7 +92,7 @@ function randomNumGen(min, max)
 }
 
 // creates a poem from an input string if number of lines and length of lines isn't specified it returns a random number between a min and max
-const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNumGen(4, 7)) => {
+const poemMaker = (inputText, numLines, numLength) => {
     
     // function generating the markovObject
     const MarkovDictBuilder = () => {
@@ -175,7 +175,7 @@ const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNu
         
         //iterates through line length calling randGen for the next word
         //if there isn't a next word a random word is used
-        for(let i = 0; i < numLength-1; i++){
+        for(let i = 0; i < numLength-2; i++){
             let searchPhrase = [poemLineArr[i], poemLineArr[i+1]];
             
             let nextWordinArr = randGenWord(searchPhrase);
@@ -198,7 +198,7 @@ const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNu
     const lineRepeater = () => {
         let poem = '';
         for(let i = 0; i < numLines; i++){
-            poem +=  `${writeLine()} \n`
+            poem +=  `${writeLine()} <br>`
         }
         
         return poem;
@@ -210,11 +210,13 @@ const poemMaker = (inputText, numLines = randomNumGen(4,8), numLength = randomNu
 
 const displayResults = () => {
     let inputString = document.getElementById("inputText").value;
-    resultPoem = poemMaker(inputString);
+    let inputLines = document.getElementById("lineNum").value;
+    let inputWordNum = document.getElementById("wordNum").value;
+    resultPoem = poemMaker(inputString, inputLines = randomNumGen(4,8), inputWordNum = randomNumGen(4, 7));
+    
     console.log(resultPoem);
+    document.getElementById('poemDisplay').innerHTML = resultPoem;
     
 }
 
-const reset = () => {
-    
-}
+
