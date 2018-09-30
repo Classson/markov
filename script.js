@@ -42,10 +42,16 @@ const poemMakerOne = (inputText, numLines, numLength) => {
     const writeLine = () => {
         let markObj = MarkovDictBuilder();
         let objKeysArr = Object.keys(markObj);
+        console.log(markObj);
 
         //returns random word after input word
         const randGen = (word) => {
+            if(!markObj[word]){
+                word = objKeysArr[Math.floor(Math.random() * objKeysArr.length)];
+            }
+            
             return markObj[word][Math.floor(Math.random() * markObj[word].length)];
+            
         }
 
         let poemLineArr = [];
