@@ -7,9 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <textarea type="text" id="inputText" rows="10" cols="30" placeholder="Enter your text."></textarea>
-
-    <br>
+    
     <div id=numberInputs>
         
         <label for="wordNum">Number of words per line</label>
@@ -22,8 +20,15 @@
         
     </div>
     
-    <input type ="button" id="submitButton" onclick="displayResults()" value="SubmittedText"/>
+    <textarea type="text" id="inputText" rows="10" cols="30" placeholder="Enter your text."></textarea>
+
+    <br>
     
+    <input type ="button" id="submitButton" onclick="displayResultsOne()" value="One Word Deep"/>
+    <input type ="button" id="submitButton" onclick="displayResultsTwo()" value="Two Words Deep"/>
+    
+    
+    <br>
     <br>
     
     <div id=poemDisplay>display</div>
