@@ -66,7 +66,7 @@ const poemMakerOne = (inputText, numLines, numLength) => {
         poemLineArr.push(firstWord);
 
         //iterates through line length calling randGen for the next word
-        for(let i = 1; i <= numLength; i++){
+        for(let i = 1; i < numLength; i++){
             poemLineArr.push(randGen(poemLineArr[i-1]));
 
         }
@@ -208,7 +208,7 @@ const displayResultsOne = () => {
     let inputString = document.getElementById("inputText").value;
     let inputLines = document.getElementById("lineNum").value;
     let inputWordNum = document.getElementById("wordNum").value;
-    resultPoem = poemMakerOne(inputString, inputLines = randomNumGen(4,8), inputWordNum = randomNumGen(4, 7));
+    resultPoem = poemMakerOne(inputString, inputLines, inputWordNum);
 
     document.getElementById('poemDisplay').innerHTML = resultPoem;
     
