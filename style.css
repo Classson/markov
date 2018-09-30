@@ -11,6 +11,7 @@ body {
 
 h1 {
     color: #014e66;
+    font-size: 40px;
 }
 
 textarea[type=text] {
@@ -19,6 +20,8 @@ textarea[type=text] {
 
 input[type=number] {
     background-color: #D9D9D9;
+    width: 30px;
+    margin-left: 10px;
 }
 
 
