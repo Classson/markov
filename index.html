@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <h1>Morkov Poem Generator</h1>
     <div id=numberInputs>
         
         <label for="wordNum">Number of words per line</label>
@@ -24,14 +24,14 @@
 
     <br>
     
-    <input type ="button" id="submitButton" onclick="displayResultsOne()" value="One Word Deep"/>
-    <input type ="button" id="submitButton" onclick="displayResultsTwo()" value="Two Words Deep"/>
+    <input type ="button" id="submitButton" onclick="displayResultsOne();reset()" value="One Word Deep"/>
+    <input type ="button" id="submitButton" onclick="displayResultsTwo();reset()" value="Two Words Deep"/>
     
     
     <br>
     <br>
     
-    <div id=poemDisplay>display</div>
+    <div id=poemDisplay></div>
     
 <script src="script.js"></script> 
 </body>
