@@ -27,8 +27,8 @@ const formatStr = (inputText) => {
             break;
 
         case "tallahassee" : cleanerStr = tallStr;
-            document.getElementById('inputText').style.backgroundImage = "url('https://i.imgur.com/tiKrsrY.gif')";
-            document.getElementById('inputText').style.color = "white";
+            document.getElementById('inputText').style.backgroundImage = "url('http://25.media.tumblr.com/d4d01fb080edf5d60c6ec06dfde2e4de/tumblr_mj45bkXQGs1qh0oz4o1_500.gif')";
+            document.getElementById('inputText').style.color = "black";
             break;
 
         case "darcy" : cleanerStr = prideStr;
