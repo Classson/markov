@@ -9,40 +9,40 @@ const formatStr = (inputText) => {
     let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '');
     let cleanerStr = cleanStr.replace(newLinesReg, ' ');
     
-    //talking heads easter egg
-    if(cleanerStr === "stop making sense"){
-        cleanerStr = talkingHeadsStr;
-        document.getElementById('inputText').style.backgroundImage = "url('https://78.media.tumblr.com/d18184d9f69eeff34cce9746b2838dd2/tumblr_nkzjqntHIg1u9ix69o1_500.gif')";
-        document.getElementById('inputText').style.color = "white";
-    }
-    else if(cleanerStr === "nevermore"){
-        cleanerStr = theRaven;
-        document.getElementById('inputText').style.backgroundImage = "url('https://media1.tenor.com/images/d176c041cddb700621905a91b5cb7f8c/tenor.gif')";
-        document.getElementById('inputText').style.color = "white";
-    }
-    else if(cleanerStr === "bling"){
-        cleanerStr = hotLineString;
-        document.getElementById('inputText').style.backgroundImage = "url('https://media.giphy.com/media/3o85xvbBgiaFthEzJu/giphy.gif')";
-        document.getElementById('inputText').style.color = "white";
-    }
-    else if(cleanerStr === "tallahassee"){
-        cleanerStr = tallStr;
-        document.getElementById('inputText').style.backgroundImage = "url('https://i.imgur.com/tiKrsrY.gif')";
-        document.getElementById('inputText').style.color = "white";
-    }
-    else if(cleanerStr === "pride"){
-        cleanerStr = prideStr;
-        document.getElementById('inputText').style.backgroundImage = "url('https://media.giphy.com/media/ESxVxc9HttIDm/giphy.gif')";
-        document.getElementById('inputText').style.color = "black";
-    }
-    else {
-        document.getElementById('inputText').style.backgroundImage = "none";
-        document.getElementById('inputText').style.color = "black"; 
-    }
+    //check for easter egg strings
+    switch(cleanerStr){
+        case "stop making sense" : cleanerStr = talkingHeadsStr;
+            document.getElementById('inputText').style.backgroundImage = "url('https://78.media.tumblr.com/d18184d9f69eeff34cce9746b2838dd2/tumblr_nkzjqntHIg1u9ix69o1_500.gif')";
+            document.getElementById('inputText').style.color = "white";
+            break;
+
+        case "nevermore" : cleanerStr = theRaven;
+            document.getElementById('inputText').style.backgroundImage = "url('https://media1.tenor.com/images/d176c041cddb700621905a91b5cb7f8c/tenor.gif')";
+            document.getElementById('inputText').style.color = "white";
+            break;
+
+        case "bling" : cleanerStr = hotLineString;
+            document.getElementById('inputText').style.backgroundImage = "url('https://media.giphy.com/media/3o85xvbBgiaFthEzJu/giphy.gif')";
+            document.getElementById('inputText').style.color = "white";
+            break;
+
+        case "tallahassee" : cleanerStr = tallStr;
+            document.getElementById('inputText').style.backgroundImage = "url('https://i.imgur.com/tiKrsrY.gif')";
+            document.getElementById('inputText').style.color = "white";
+            break;
+
+        case "darcy" : cleanerStr = prideStr;
+            document.getElementById('inputText').style.backgroundImage = "url('https://media.giphy.com/media/ESxVxc9HttIDm/giphy.gif')";
+            document.getElementById('inputText').style.color = "black";
+            break;
+
+        default: cleanerStr = cleanerStr;
+            document.getElementById('inputText').style.backgroundImage = "none";
+            document.getElementById('inputText').style.color = "black"; 
+       }
     
     return cleanerStr;
 }
-
 
 
 
