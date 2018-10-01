@@ -10,22 +10,7 @@ const poemMakerOne = (inputText, numLines, numLength) => {
     // function that creates Markov dictionary from string
     const MarkovDictBuilder = () => {
         
-    //removes numbers and punctuation and converts to lowercase
-    let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`“”~,‘’()]/gi;
-    let newLinesReg = /\r?\n|\r/gi;
-        
-    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '');
-    
-    let cleanerStr = cleanStr.replace(newLinesReg, ' ');
-        
-    console.log(cleanerStr);
-    
-    //talking heads easter egg
-    if(cleanerStr === "stop making sense"){
-        cleanerStr = talkingHeadsStr;
-        document.getElementById('inputText').style.backgroundImage = "url('https://78.media.tumblr.com/d18184d9f69eeff34cce9746b2838dd2/tumblr_nkzjqntHIg1u9ix69o1_500.gif')";
-        document.getElementById('inputText').style.color = "white";
-    }
+    let cleanerStr = formatStr(inputText);
         
     // splits string into array of words
     let strArr = cleanerStr.split(" ");
@@ -101,16 +86,8 @@ const poemMakerTwo = (inputText, numLines, numLength) => {
     
     // function generating the markovObject
     const MarkovDictBuilder = () => {
-    //removes numbers and punctuation and converts to lowercase
-    let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`~,()]/gi;
-    let newLinesReg = /\r?\n|\r/gi;
-    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '');
-    let cleanerStr = cleanStr.toLowerCase().replace(newLinesReg, ' ');
 
-    //talking heads easter egg
-    if(cleanerStr === "stop making sense"){
-        cleanerStr = talkingHeadsStr;
-    }
+    let cleanerStr = formatStr(inputText);
     
     // splits string into array of words
     let strArr = cleanerStr.split(" ");
