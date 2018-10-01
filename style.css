@@ -15,6 +15,9 @@ h1 {
 }
 
 textarea[type=text] {
+/*    background-image: url('https://78.media.tumblr.com/d18184d9f69eeff34cce9746b2838dd2/tumblr_nkzjqntHIg1u9ix69o1_500.gif');*/
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: #D9D9D9;
 }
 

@@ -10,14 +10,17 @@
     <h1>Markov Poem Generator</h1>
     <div id=numberInputs>
         
-        <label for="wordNum">Number of words per line</label>
-        <input id="wordNum" type="number" name="wordNum" value="" >
+        <div id="wordNumLine">
+            <label for="wordNum">Number of words per line</label>
+            <input id="wordNum" type="number" name="wordNum" value="" >
+        </div>
         
         <br>
 
-        
-        <label for="lineNum">Number of lines in the poem</label>
-        <input id="lineNum" type="number" name="lineNum" value="">
+        <div id="lineNumLine">
+            <label for="lineNum">Number of lines in the poem</label>
+            <input id="lineNum" type="number" name="lineNum" value="">
+        </div>
         
     </div>
     
@@ -34,6 +37,7 @@
     
     <div id=poemDisplay></div>
     
-<script src="script.js"></script> 
+<script src="script.js"></script>
+<script src="albumStrings.js"></script> 
 </body>
 </html>
