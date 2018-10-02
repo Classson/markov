@@ -49,7 +49,6 @@ textarea[type=text] {
     margin: 20px;
     width: 65vw;
     height: 35vw;
-    font-size: 16px;
 }
 
 
@@ -75,6 +74,12 @@ textarea[type=text] {
 
 #hint {
     margin: 8px;
+}
+
+input[type=text],
+select:focus,
+textarea {
+  font-size: 16px;
 }
 
 @media(max-width: 500px){
