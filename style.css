@@ -13,7 +13,7 @@ h1 {
     margin-top: 25px;
     font-family:  'Special Elite', serif;
     color: #014e66;
-    font-size: 40px;
+    font-size: 55px;
     text-align: center;
 }
 
@@ -24,13 +24,22 @@ h1 {
 
 #numberInputs {
     padding: 20px;
+    display: flex;
 }
 
 
 input[type=number] {
     background-color: #D9D9D9;
     width: 30px;
+    height: 20px;
     margin-left: 10px;
+}
+
+.inputSecs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px;
 }
 
 textarea[type=text] {
@@ -66,7 +75,12 @@ textarea[type=text] {
     margin: 8px;
 }
 
-@media(max-width: 400px){
+@media(max-width: 500px){
+    
+    h1 {
+        font-size: 12vw;
+    }
+    
     #buttons {
         display: flex;
         flex-direction: column;
@@ -83,6 +97,11 @@ textarea[type=text] {
     
     #numberInputs {
         width: 85vw;
+        flex-direction: column;
+    }
+    
+    .inputSecs {
+        margin: 3px;
     }
     
     #poemDisplay{
