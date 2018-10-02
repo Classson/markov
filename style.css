@@ -26,6 +26,10 @@ h1 {
     padding: 20px;
 }
 
+#wordNumLine{
+    display: flex;
+}
+
 input[type=number] {
     background-color: #D9D9D9;
     width: 30px;
