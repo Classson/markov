@@ -6,7 +6,7 @@ const formatStr = (inputText) => {
     let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`“”“”~,‘’()]/gi;
     let newLinesReg = /\r?\n|\r|\d/gi;
         
-    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '');
+    let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '').trim();
     let cleanerStr = cleanStr.replace(newLinesReg, ' ');
     
     //check for easter egg strings
