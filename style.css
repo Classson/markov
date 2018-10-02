@@ -61,6 +61,10 @@ textarea[type=text] {
     text-align: center;
 }
 
+#hint {
+    margin: 20px;
+}
+
 @media(max-width: 400px){
     #buttons {
         display: flex;

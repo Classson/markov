@@ -13,6 +13,8 @@
         <p>The Markov poem generator creates poems from an input text using a Markov Chain i.e. a stochastic process that satisfies the Markov property. To simplify, it is a process that predicts the future based solely on the present state and includes a random variable.</p>
         
         <p>To create a Markov poem enter your text into the box below. Optionally you can also enter the number of words per poem line and the number of lines you'd like to see in the poem. If no values are entered the poem will have a random number (between 4 and 8) of lines and an random number (between 6 and 10) of words per line.</p>
+        
+        <p>The "One Word Deep" and "Two Words Deep" buttons refer to how deep the selected Markov chain will be. Pick one word for a more random poem and two words for more coherent lines.</p>
     </div>
     <div id=numberInputs>
         
@@ -42,7 +44,7 @@
     <br>
     
     <p id=poemDisplay></p>
-    <p>Try entering the text "bling," "nevermore" or "stop making sense."<p>
+    <p id="hint">Try entering the text "bling," "nevermore" or "stop making sense."<p>
     
 <script src="script.js"></script>
 <script src="albumStrings.js"></script> 
