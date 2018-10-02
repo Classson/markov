@@ -226,7 +226,7 @@ const displayResultsTwo = () => {
         inputLines = randomNumGen(4,8);
     }
     if(!inputWordNum){
-        inputWordNum = randomNumGen(6, 8);
+        inputWordNum = randomNumGen(6, 10);
     }
 
     //builds poem

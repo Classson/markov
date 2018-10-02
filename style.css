@@ -1,18 +1,27 @@
 body {
     background-color: #F9CF00;
-    text-align: center;
     padding: 15px;
     font-family: sans-serif;
-}
-
-#numberInputs {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     font-family:  'Special Elite', serif;
     color: #014e66;
     font-size: 40px;
+    text-align: center;
+}
+
+#description {
+    padding: 0px 20px 20px 20px;
+    max-width: 70vw;
+}
+
+#numberInputs {
+    padding: 20px;
 }
 
 textarea[type=text] {
@@ -29,8 +38,8 @@ input[type=number] {
 }
 
 
-#submitButton {
-    width: 200px;
+.submitButton {
+    max-width: 200px;
     height: 40px;
     background-color: #014e66;
     color: white;
@@ -43,5 +52,6 @@ input[type=number] {
     padding: 10px;
     font-family:  'Special Elite', serif;
     line-height: 30px;
+    text-align: center;
 }
 
