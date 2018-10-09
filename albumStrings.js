@@ -3,7 +3,7 @@
 const formatStr = (inputText) => {
     
     //removes numbers and punctuation and converts to lowercase
-    let regNumandPunc = /[.,\/#!$%\^&\*;:{}=\-_`“”“”~,‘’()]/gi;
+    let regNumandPunc = /[.,\/#!"$%\^&\*;:{}=\-_`“”~,‘’()]/gi;
     let newLinesReg = /\r?\n|\r|\d/gi;
         
     let cleanStr = inputText.toLowerCase().replace(regNumandPunc, '').trim();
